@@ -373,6 +373,14 @@ XBT:(.+),(.+) $(\2mm: bitcoin, bitcoins, de bitcoins, satoshi, satoshis, \1) # T
 \d+[,.] ""
 (\d+)$ $(no-centes:$(f:$(ordinal \1)))
 
+== ordinal-masculine-plural ==
+
+([-−]?\d+) $(ordinal-masculine-plural $(ordinal-masculine \1))
+primer primers
+segon segons
+(.*)è  \1ens
+(.*)er   \1ers
+
 == ordinal-number(-masculine)? ==
 
 #(\d+) $(o:\2)
@@ -401,7 +409,8 @@ XBT:(.+),(.+) $(\2mm: bitcoin, bitcoins, de bitcoins, satoshi, satoshis, \1) # T
 
 == fraction(-masculine)? ==
 ([--]?1)(/1)? $2
-([--]?1)/([1-9]\d*) $2| $(partitive \3)
+([--]?1)/2 mig
+([--]?1)/([3-9]\d*) $(masculine \2)| $(partitive \3)
 ([--]?\d+)(/1)? $2
 ([--]?\d+)/([1-9]\d*) $2| $(partitive-plural \3)
 

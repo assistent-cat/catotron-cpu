@@ -23,10 +23,11 @@ class NumbersCa(unittest.TestCase):
         """
         Converteix decimals
         """
-        self.assertEqual(normalize_numbers_ca("1,33"), "u coma tres tres")
+        self.assertEqual(normalize_numbers_ca("1,33"), "u coma trenta-tres")
         self.assertEqual(normalize_numbers_ca("75,5"), "setanta-cinc coma cinc")
-        self.assertEqual(normalize_numbers_ca("999.999.999,99"), "nou-cents noranta-nou milions nou-cents noranta-nou mil nou-cents noranta-nou coma nou nou")
-        self.assertEqual(normalize_numbers_ca("1,12345678900"), "u coma u dos tres quatre cinc sis set vuit nou zero zero")
+        self.assertEqual(normalize_numbers_ca("75,555"), "setanta-cinc coma cinc-cents cinquanta-cinc")
+        self.assertEqual(normalize_numbers_ca("999.999.999,99"), "nou-cents noranta-nou milions nou-cents noranta-nou mil nou-cents noranta-nou coma noranta-nou")
+        self.assertEqual(normalize_numbers_ca("1,12345678900"), "u coma dotze trenta-quatre cinquanta-sis set-cents vuitanta-nou")
 
     def test_decimals_2(self):
         """
@@ -91,7 +92,7 @@ class NumbersCa(unittest.TestCase):
         """
         Converteix fraccions plurals
         """
-        self.assertEqual(normalize_numbers_ca("4/2 gots de vi"), "quatre mitjos gots de vi")
+        self.assertEqual(normalize_numbers_ca("4/2 gots de vi"), "quatre migs gots de vi")
         self.assertEqual(normalize_numbers_ca("2/3 de farina"), "dos terços de farina")
         self.assertEqual(normalize_numbers_ca("3/8"), "tres vuitens")
         
