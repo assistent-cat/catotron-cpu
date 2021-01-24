@@ -65,12 +65,12 @@ class NumbersCa(unittest.TestCase):
         self.assertEqual(normalize_numbers_ca("va quedar 5a en la classificació"), "va quedar cinquena en la classificació")
         self.assertEqual(normalize_numbers_ca("la 5na vegada"), "la cinquena vegada")
 
-    @unittest.skip("Encara no ha estat implementat a soros")
     def test_ordinals_mp(self):
         """
         Converteix ordinals masculins plurals
         """
         self.assertEqual(normalize_numbers_ca("1rs"), "primers")
+        self.assertEqual(normalize_numbers_ca("van arribar 2ns"), "van arribar segons")
     
     @unittest.skip("Encara no ha estat implementat a soros")
     def test_ordinals_fp(self):

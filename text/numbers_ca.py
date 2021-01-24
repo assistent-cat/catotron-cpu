@@ -27,8 +27,11 @@ def _esborra_separador_milers(m):
 def _num2text(m):
   return num2text.run(m.group(0))
 
-def _num2text_ordinal_m(m):
+def _num2text_ordinal_ms(m):
   return num2text.run(f"ordinal {m.group(1)}") + m.group(3)
+
+def _num2text_ordinal_mp(m):
+  return num2text.run(f"ordinal-masculine-plural {m.group(1)}") + m.group(3)
 
 def _num2text_ordinal_f(m):
   return num2text.run(f"ordinal-feminine {m.group(1)}") + m.group(3)
@@ -54,7 +57,8 @@ def _fraccions_generic_p(m):
 def normalize_numbers_ca(text):
   text = re.sub(_separador_milers_re, _esborra_separador_milers, text)
   text = re.sub(_decimal_re, _num2text, text)
-  text = re.sub(_ordinal_ms_re, _num2text_ordinal_m, text)
+  text = re.sub(_ordinal_ms_re, _num2text_ordinal_ms, text)
+  text = re.sub(_ordinal_mp_re, _num2text_ordinal_mp, text)
   text = re.sub(_ordinal_fs_re, _num2text_ordinal_f, text)
   text = re.sub(_fraccions_mig_s_re, _fraccions_mig_s, text)
   text = re.sub(_fraccions_mig_p_re, _fraccions_mig_p, text)
