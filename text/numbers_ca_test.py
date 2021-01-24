@@ -73,7 +73,6 @@ class NumbersCa(unittest.TestCase):
         self.assertEqual(normalize_numbers_ca("1rs"), "primers")
         self.assertEqual(normalize_numbers_ca("van arribar 2ns"), "van arribar segons")
     
-    @unittest.skip("Encara no ha estat implementat a soros")
     def test_ordinals_fp(self):
         """
         Converteix ordinals femenins plurals

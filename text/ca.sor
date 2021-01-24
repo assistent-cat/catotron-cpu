@@ -375,11 +375,16 @@ XBT:(.+),(.+) $(\2mm: bitcoin, bitcoins, de bitcoins, satoshi, satoshis, \1) # T
 
 == ordinal-masculine-plural ==
 
-([-−]?\d+) $(ordinal-masculine-plural $(ordinal-masculine \1))
+([-−]?\d+) $(ordinal-masculine-plural $(ordinal \1))
 primer primers
 segon segons
 (.*)è  \1ens
 (.*)er   \1ers
+
+== ordinal-feminine-plural ==
+
+([-−]?\d+) $(ordinal-feminine-plural $(ordinal-feminine \1))
+(.*)a  \1es
 
 == ordinal-number(-masculine)? ==
 
