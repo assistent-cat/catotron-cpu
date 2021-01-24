@@ -14,8 +14,9 @@ hyperparameter. Some cleaners are English-specific. You'll typically want to use
 
 import re
 from unidecode import unidecode
-from .numbers import normalize_numbers
-from .symbols import symbols
+from text.numbers import normalize_numbers
+from text.numbers_ca import normalize_numbers_ca
+from text.symbols import symbols
 
 # Regular expression matching whitespace:
 _whitespace_re = re.compile(r'\s+')
@@ -47,7 +48,10 @@ _abbreviations_ca = [(re.compile('\\b%s\\b' % x[0], re.IGNORECASE), x[1]) for x 
   ('tv3', 't v tres'),
   ('8tv', 'vuit t v'),
   ('pp', 'p p'),
-  ('psoe', 'p soe')
+  ('psoe', 'p soe'),
+  ('sr.?', 'senyor'),
+  ('sra.?', 'senyora'),
+  ('srta.?', 'senyoreta')
 ]]
 
 _replacements_ca = [(re.compile('%s' % x[0], re.IGNORECASE), x[1]) for x in [
@@ -81,9 +85,11 @@ def convert_characters(text, lang='ca'):
   return text
 
 
-def expand_numbers(text):
-  #TODO should be language dependent
-  return normalize_numbers(text)
+def expand_numbers(text, lang="ca"):
+  if lang == 'ca':
+    return normalize_numbers_ca(text)
+  else:
+    return normalize_numbers(text)
 
 
 def lowercase(text):
@@ -128,7 +134,7 @@ def english_cleaners(text):
   '''Pipeline for English text, including number and abbreviation expansion.'''
   text = convert_to_ascii(text)
   text = lowercase(text)
-  text = expand_numbers(text)
+  text = expand_numbers(text, lang='en')
   text = expand_abbreviations(text, lang='en')
   text = collapse_whitespace(text)
   return text
@@ -136,7 +142,7 @@ def english_cleaners(text):
 
 def catalan_cleaners(text):
   text = lowercase(text)
-  #text = expand_numbers(text, lang="ca")
+  text = expand_numbers(text, lang="ca")
   text = convert_characters(text, lang="ca")
   text = convert_to_ascii(text, lang="ca")
   text = expand_abbreviations(text, lang="ca")
