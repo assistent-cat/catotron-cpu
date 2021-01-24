@@ -180,6 +180,15 @@ XEU:(.+),(.+) $(\2mm: ecu, ecus, d'ecus, cèntim, cèntims, \1)
 (.*)è  \1ena
 (.*)   \1a
 
+== ordinal-masculine-plural ==
+
+([-−]?\d+) $(ordinal-masculine-plural $(ordinal-masculine \1))
+primer primers
+segon segons
+(.*)è  \1ens
+(.*)er   \1ers
+
+
 == (ordinal)-number(-feminine|-masculine)? ==
 
 ([-−]?\d+)	\3$(ordinal-number $(\1\2 \3))

@@ -79,12 +79,21 @@ class NumbersCa(unittest.TestCase):
         """
         self.assertEqual(normalize_numbers_ca("1es"), "primeres")
     
-    @unittest.skip("Encara no ha estat implementat")
-    def test_fraccions(self):
+    def test_fraccions_s(self):
         """
-        Converteix fraccions
+        Converteix fraccions singulars
         """
-        self.assertEqual(normalize_numbers_ca("1/2"), "mig")
+        self.assertEqual(normalize_numbers_ca("1/2 got de vi"), "mig got de vi")
+        self.assertEqual(normalize_numbers_ca("1/3 de farina"), "un terç de farina")
+        self.assertEqual(normalize_numbers_ca("1/8"), "un vuitè")
+        
+    def test_fraccions_p(self):
+        """
+        Converteix fraccions plurals
+        """
+        self.assertEqual(normalize_numbers_ca("4/2 gots de vi"), "quatre mitjos gots de vi")
+        self.assertEqual(normalize_numbers_ca("2/3 de farina"), "dos terços de farina")
+        self.assertEqual(normalize_numbers_ca("3/8"), "tres vuitens")
         
 if __name__ == '__main__':
     unittest.main()
