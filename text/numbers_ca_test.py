@@ -94,6 +94,13 @@ class NumbersCa(unittest.TestCase):
         self.assertEqual(normalize_numbers_ca("4/2 gots de vi"), "quatre migs gots de vi")
         self.assertEqual(normalize_numbers_ca("2/3 de farina"), "dos terços de farina")
         self.assertEqual(normalize_numbers_ca("3/8"), "tres vuitens")
+
+    def test_hores(self):
+        """
+        Converteix hores de manera simplificada
+        """
+        self.assertEqual(normalize_numbers_ca("a les 11:45"), "a les onze i quaranta-cinc")
+        self.assertEqual(normalize_numbers_ca("a partir de les 23:12"), "a partir de les vint-i-tres i dotze")
         
 if __name__ == '__main__':
     unittest.main()
