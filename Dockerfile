@@ -12,6 +12,7 @@ COPY ./requirements-server.txt /srv/requirements.txt
 RUN pip install --no-cache-dir -U pip
 RUN pip install --no-cache-dir -r /srv/requirements.txt
 
+COPY ./demo_server.py /srv/demo_server.py
 COPY ./server.py /srv/server.py
 COPY ./synthesizer.py /srv/synthesizer.py
 COPY ./hparam.py /srv/hparam.py
@@ -32,3 +33,6 @@ RUN wget -q https://www.softcatala.org/pub/softcatala/catotron-models/upc_pau_ta
 RUN wget -q https://www.softcatala.org/pub/softcatala/catotron-models/melgan_onapau_catotron.pt
 
 WORKDIR /srv
+
+ENTRYPOINT [ "python" ]
+CMD [ "demo_server.py" ]
